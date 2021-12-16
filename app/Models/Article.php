@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function getPathAttribute()
+    {
+        return asset("api/question/$this->slug");
+    }
+
 }
